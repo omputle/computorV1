@@ -13,4 +13,4 @@ def check_roots(a,b,c):
         print("x1: ", x1)
         print("x2: ", x2)
 
-check_roots(1, 2, 1)
+# check_roots(1, 2, 1)
