@@ -36,7 +36,7 @@ class Main:
 
     def reduce_array(self, array):
         check = 1
-        if len(array) == 1:
+        if len(array) == 1 or len(array) == 0:
             return array
         while check:
             length = len(array)
@@ -59,7 +59,9 @@ class Main:
         elif degree == 0 and not final_array[0]:
             print("All the real numbers are solution.")
         elif degree == 0 and final_array[0]:
-            print("No solution! Not possible!", final_array[0], "is not equal to 0 (zero)")
+            print("No solution! Not possible! {} is not equal to 0 (zero)".format(final_array[0]))
+        else:
+            print("Check qeuation")
 
 if __name__ == "__main__":
     if (len(sys.argv) < 2):
