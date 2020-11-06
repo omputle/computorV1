@@ -7,8 +7,6 @@ class Reduction:
         sides = equation.split("=")
         self.lhs = sides[0].strip()
         self.rhs = sides[1].strip()
-        print("LHS: ", self.lhs)
-        print("RHS: ", self.rhs)
     
     def find_max_deg(self):
         left_deg = self.convert_to_int(self.deg_find(self.lhs))
@@ -19,11 +17,11 @@ class Reduction:
         else:
             return (max(right_deg))
 
-    def create_zeros(self, num):
-        zeros = []
-        for i in range(num + 1):
-            zeros.append(i - i)
-        print(zeros)
+    # def create_zeros(self, num):
+    #     zeros = []
+    #     for i in range(num + 1):
+    #         zeros.append(i - i)
+    #     print(zeros)
     
     def find_coefficients(self):
         sides = {}
@@ -31,8 +29,6 @@ class Reduction:
         right_co = self.coeff_find(self.rhs)
         left_co = self.convert_coeffs(left_co)
         right_co = self.convert_coeffs(right_co)
-        print('LHS coefficients', left_co)
-        print('RHS coefficients', right_co)
         sides['left'] = left_co
         sides['right'] = right_co
         return sides
@@ -51,8 +47,6 @@ class Reduction:
             dif = dif * -1
             for i in range(dif):
                 left.append(float(i - i))
-        print(left)
-        print(right)
         red_list = []
         for i in range(len(left)):
             red_list.append(left[i] - right[i])
