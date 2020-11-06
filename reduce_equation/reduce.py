@@ -1,7 +1,5 @@
 import re
-import json
 
-# "5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0"
 class Reduction:
     def __init__(self, equation):
         sides = equation.split("=")
@@ -17,12 +15,6 @@ class Reduction:
         else:
             return (max(right_deg))
 
-    # def create_zeros(self, num):
-    #     zeros = []
-    #     for i in range(num + 1):
-    #         zeros.append(i - i)
-    #     print(zeros)
-    
     def find_coefficients(self):
         sides = {}
         left_co = self.coeff_find(self.lhs)
@@ -35,11 +27,9 @@ class Reduction:
 
     def reduced_list(self):
         sides = self.find_coefficients()
-        # print(json.dumps(sides, indent=4))
         left = sides.get('left')
         right = sides.get('right')
         dif = len(left) - len(right)
-        # print(dif)
         if dif > 0:
             for i in range(dif):
                 right.append(float(i - i))
@@ -49,7 +39,7 @@ class Reduction:
                 left.append(float(i - i))
         red_list = []
         for i in range(len(left)):
-            red_list.append(left[i] - right[i])
+            red_list.append(round(left[i] - right[i], 2))
         return red_list
 
     def deg_find(self, text_to_search):
@@ -57,7 +47,6 @@ class Reduction:
         matches = pattern.findall(text_to_search)
         return matches
 
-    # "5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0"
     def coeff_find(self, text_to_search):
         pattern = re.compile(r'([-\s]*[\d+\.]*\d+)\s\*\s[xX]')
         matches = pattern.findall(text_to_search)
