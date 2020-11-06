@@ -61,9 +61,6 @@ class Main:
         elif degree == 0 and final_array[0]:
             print("No solution! Not possible!", final_array[0], "is not equal to 0 (zero)")
 
-
-
-
 if __name__ == "__main__":
     if (len(sys.argv) < 2):
         print("No equations!")
