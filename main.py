@@ -20,6 +20,8 @@ class Main:
     def reduced_form(self):
         disp = 'Reduced form: '
         count = 0
+        if len(self.reduced_equation) == 0:
+            return
         for item in self.reduced_equation:
             if count != 0:
                 if item < 0:
@@ -49,7 +51,8 @@ class Main:
     def find_degree(self):
         final_array = self.reduce_array(self.reduced_equation)
         degree = len(final_array) - 1
-        print("Polynomial degree: ", degree)
+        if degree >= 0:
+            print("Polynomial degree: ", degree)
         if degree > 2:
             print("The polynomial degree is stricly greater than 2, I can't solve.")
         elif degree == 2:
@@ -61,7 +64,7 @@ class Main:
         elif degree == 0 and final_array[0]:
             print("No solution! Not possible! {} is not equal to 0 (zero)".format(final_array[0]))
         else:
-            print("Check qeuation")
+            print("Check equation")
 
 if __name__ == "__main__":
     if (len(sys.argv) < 2):
