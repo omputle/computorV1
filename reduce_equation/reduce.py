@@ -83,5 +83,8 @@ class Reduction:
         coeffs_array = []
         for item in coeffs:
             num = re.sub(r'\s+', '', item)
-            coeffs_array.append(float(Fraction(num)))
+            try:
+                coeffs_array.append(float(Fraction(num)))
+            except ZeroDivisionError:
+                print('Oops! Zero division')
         return coeffs_array
