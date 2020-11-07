@@ -2,6 +2,13 @@ from math import sqrt
 import cmath
 
 def check_roots(array):
+    """
+        Takes an list of coefficients in a standard quadratic form 
+        (ax^2 + bx + c = 0) and tries to solve it. It starts by calculating the
+        discriminant. If discriminant is positive, it means the solution has 
+        two real roots. If it is zero, the solution has one real root. If it 
+        is negative, the solution has compex root(s).
+    """
     a = array[2]
     b = array[1]
     c = array[0]

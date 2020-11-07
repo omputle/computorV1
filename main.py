@@ -4,10 +4,17 @@ from linear.linear import check_root
 from reduce_equation.reduce import Reduction
 
 class Main:
+    """
+        This is the main class
+    """
     def __init__(self, equation):
         self.equation = equation
     
     def solve_equation(self):
+        """
+            This method calls validates the input and call the appropriate
+            methods to solve the equation.
+        """
         sides = self.equation.split("=")
         if (len(sides) != 2):
             print("Enter valid equation")
@@ -18,6 +25,10 @@ class Main:
         self.find_degree()
 
     def reduced_form(self):
+        """
+            This method is repsonsible for printing the reduced form of the
+            equation.
+        """
         disp = 'Reduced form: '
         count = 0
         if len(self.reduced_equation) == 0:
@@ -37,6 +48,10 @@ class Main:
         print(disp)
 
     def reduce_array(self, array):
+        """
+            This method removes the trailing zeros from the reduced array of the coefficients.
+            eg. input = [1,2,3,0,0,0] -> output = [1,2,3]
+        """
         check = 1
         if len(array) == 1 or len(array) == 0:
             return array
@@ -49,6 +64,11 @@ class Main:
         return array
 
     def find_degree(self):
+        """
+            This method takes the final array (after removal of trailing zeros)
+            and determines the degree of the polynomial. Based on that, it then
+            calls an appropriate function to colculate the solution.
+        """
         final_array = self.reduce_array(self.reduced_equation)
         degree = len(final_array) - 1
         if degree >= 0:
@@ -68,7 +88,7 @@ class Main:
 
 if __name__ == "__main__":
     if (len(sys.argv) < 2):
-        print("No equations!")
+        print("No equation entered!")
     elif (len(sys.argv) > 2):
         print("Enter one equation!")
     else:
